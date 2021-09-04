@@ -3,6 +3,10 @@ package com.training.hb;
 
 public class Employee {  
 private int Id;  
+@Override
+public String toString() {
+	return "Employee [Id=" + Id + ", name=" + name + "]";
+}
 public int getId() {
 	return Id;
 }

@@ -1,3 +1,6 @@
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;    
 import org.hibernate.SessionFactory;    
 import org.hibernate.Transaction;  
@@ -19,15 +22,31 @@ public static void main(String[] args) {
    SessionFactory factory = meta.getSessionFactoryBuilder().build();  
    Session session = factory.openSession();  
    Transaction t = session.beginTransaction();   
-            
+    System.out.println("insertion of record");         
     Employee e1=new Employee();    
-    e1.setName("anitha");    
-        
-    session.save(e1);  
-    t.commit();  
-    System.out.println("successfully saved");    
-    factory.close();  
-    session.close();    
+    e1.setName("anitha"); 
+    session.save(e1);
+    System.out.println("successfully saved");  
+    System.out.println("retrieval of record");  
+    Employee employee=session.get(Employee.class, 102);   
+    System.out.println(employee);
+    employee.setName("maria");
+    session.save(employee); 
+    System.out.println("successfully updated");
+    System.out.println(employee);
+
+    System.out.println("retrieval of all records");  
+    Query q = session.createQuery("from Employee");
+    
+    List<Employee> emplist=q.list();
+    for(Employee emp:emplist)
+    {
+    	System.out.println(emp);
+    }
+    employee.setName("vanitha");
+    t.commit(); 
+    factory.close();
+    session.close();
         
 }    
 }   
