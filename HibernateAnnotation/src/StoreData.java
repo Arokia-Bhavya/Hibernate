@@ -34,11 +34,10 @@ public static void main(String[] args) {
     session.save(employee); 
     System.out.println("successfully updated");
     System.out.println(employee);
-
+   
     System.out.println("retrieval of all records");  
-    Query q = session.createQuery("from Employee");
-    
-    List<Employee> emplist=q.list();
+    Query query= session.createQuery("from Employee");  
+    List<Employee> emplist=query.list();
     for(Employee emp:emplist)
     {
     	System.out.println(emp);
@@ -48,7 +47,7 @@ public static void main(String[] args) {
     employee = session.load(Employee.class, emplist.get(emplist.size() - 1).getId());
 	session.delete(employee);
     System.out.println("successfully deleted");
-    t.commit();
+    t.commit(); 
     factory.close();
     session.close();
         
