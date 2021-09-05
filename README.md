@@ -6,3 +6,4 @@
 - Native way include creating model class,hibernate configuration xml,hibernate mapping xml
 - Annotation way include creating hibernate configuration file,model class with table & column mapping 
 - Hibernate Caching first level cache is turned on default and second level cache has to be turned on explicitly via xml or annotation
+- Hibernate lifecycle - Transient->Persistent->Detached  Detached->Persistent->Transient
